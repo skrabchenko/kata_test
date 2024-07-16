@@ -42,8 +42,7 @@ func main() {
 
 	// Проверяем, что строка начинается и заканчивается на кавычки
 	if !(strings.HasPrefix(input, "\"") && strings.Contains(input, "\" ")) {
-		fmt.Println("Неверный формат ввода")
-		return
+		panic("Неверный формат ввода")
 	}
 
 	// Находим первое строковое значение
@@ -54,8 +53,7 @@ func main() {
 	// Разделяем оставшуюся часть строки по пробелам
 	fields := strings.Fields(operatorAndRest)
 	if len(fields) < 2 {
-		fmt.Println("Неверный формат ввода")
-		return
+		panic("Неверный формат ввода")
 	}
 
 	operator := fields[0]
@@ -74,8 +72,7 @@ func main() {
 	if operator == "*" || operator == "/" {
 		num, err = strconv.Atoi(y)
 		if err != nil || num < 1 || num > 10 {
-			fmt.Println("Пожалуйста, введите число от 1 до 10")
-			return
+			panic("Пожалуйста, введите число от 1 до 10")
 		}
 	}
 
@@ -89,8 +86,7 @@ func main() {
 	case "/":
 		result = divideStringByNumber(x, num)
 	default:
-		fmt.Println("Некорректный оператор")
-		return
+		panic("Некорректный оператор")
 	}
 
 	// Ограничение длины результата и вывод
