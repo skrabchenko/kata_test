@@ -13,7 +13,11 @@ func sumStrings(a, b string) string {
 }
 
 func subtractStrings(a, b string) string {
-	return strings.Replace(a, b, "", 1)
+	if strings.Contains(a, b) {
+		return strings.Replace(a, b, "", -1)
+	}
+
+	return a
 }
 
 func multiplyStringByNumber(a string, b int) string {
@@ -63,6 +67,11 @@ func main() {
 	x = x[1 : len(x)-1]
 	if strings.HasPrefix(y, "\"") && strings.HasSuffix(y, "\"") {
 		y = y[1 : len(y)-1]
+	}
+
+	// Проверка длины строк
+	if len(x) > 10 || len(y) > 10 {
+		panic("Введенные строки должны быть не длиннее 10 символов")
 	}
 
 	// Проверка и выполнение операций
